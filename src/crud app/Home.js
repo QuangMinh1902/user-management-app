@@ -31,8 +31,9 @@ const Home = () => {
               <td>{d.name}</td>
               <td>{d.email}</td>
               <td>
-                <button>Update</button>
+                <Link className="text-decoration-none btn btn-sm btn-success" to={`/update/${d.id}`}>Update</Link>
                 <button>Delete</button>
+                <button>Check</button>
               </td>
             </tr>
           ))}
