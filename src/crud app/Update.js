@@ -18,10 +18,6 @@ function Update() {
         axios.get(`http://localhost:3030/users/${id}`)
         .then(res => setInputData(res.data))
         .catch(err => console.log(err))
-        console.log("Component mounted");
-        return () => {
-          console.log("Component unmounted");
-        };
     }, [])
 
     const handleSubmit = (event) => {

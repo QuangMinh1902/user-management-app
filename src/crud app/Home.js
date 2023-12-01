@@ -52,6 +52,12 @@ const Home = () => {
               <td>{d.email}</td>
               <td>
                 <Link
+                  className="text-decoration-none btn btn-sm btn-primary"
+                  to={`/read/${d.id}`}
+                >
+                  Read
+                </Link>
+                <Link
                   className="text-decoration-none btn btn-sm btn-success"
                   to={`/update/${d.id}`}
                 >
