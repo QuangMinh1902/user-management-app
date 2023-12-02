@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -12,17 +12,21 @@ const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleDelete = function (id) {
     console.log("Delete button clicked for user ID:", id);
     const confirm = window.confirm("Do you want to delete?");
     if (confirm) {
-      axios.delete(`http://localhost:3030/users/${id}`)
+      axios
+        .delete(`http://localhost:3030/users/${id}`)
         .then((res) => {
           console.log("Delete response:", res.data);
           alert("Data deleted successfully!");
-          window.location.reload();
+          axios
+            .get("http://localhost:3030/users")
+            .then((res) => setData(res.data))
+            .catch((err) => console.log(err));
         })
         .catch((error) => {
           console.error("Delete error:", error);
@@ -69,7 +73,6 @@ const Home = () => {
                 >
                   Delete
                 </button>
-                <button>Check</button>
               </td>
             </tr>
           ))}
