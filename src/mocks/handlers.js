@@ -1,4 +1,3 @@
-// src/mocks/handlers.js
 import { rest } from 'msw';
 
 const handlers = [
@@ -6,9 +5,12 @@ const handlers = [
     // Simulate a successful GET request
     return res(ctx.status(200), ctx.json([
       // Define your mocked users data here
-      { id: 1, name: 'Mocked User 1', email: 'user1@example.com' },
-      { id: 2, name: 'Mocked User 2', email: 'user2@example.com' },
-      // ... more mocked data
+      { id: 1, name: 'an', email: 'antran@gmail.com' },
+      { id: 2, name: 'jamili add', email: 'jamiliadd@example.com' },
+      { id: 3, name: 'alex', email: 'jalex@example.com' },
+      { id: 4, name: 'heya', email: 'jheya@example.com' },
+      { id: 5, name: 'queen', email: 'queeen@example.com' },
+     
     ]));
   }),
 
