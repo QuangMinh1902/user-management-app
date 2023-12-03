@@ -12,6 +12,9 @@ import {
   Paper,
 } from "@mui/material";
 import axios from "axios";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -69,12 +72,15 @@ const Home = () => {
                 <TableCell>
                   <Link to={`/read/${d.id}`} style={{ textDecoration: "none" }}>
                     <Button variant="contained" color="primary" size="small">
-                      Read
+                    <FaEye  style={{ fontSize: "20px" }} />
                     </Button>
                   </Link>
-                  <Link to={`/update/${d.id}`} style={{ textDecoration: "none" }}>
-                    <Button variant="contained" color="success" size="small">
-                      Update
+                  <Link
+                    to={`/update/${d.id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Button variant="contained" color="warning" size="small">
+                    <FaRegEdit  style={{ fontSize: "20px" }}/>
                     </Button>
                   </Link>
                   <Button
@@ -83,8 +89,8 @@ const Home = () => {
                     size="small"
                     onClick={(e) => handleDelete(d.id)}
                   >
-                    Delete
-                  </Button>
+                    <FaRegTrashAlt style={{ fontSize: "20px" }} />
+                  </Button> 
                 </TableCell>
               </TableRow>
             ))}
