@@ -57,10 +57,10 @@ const Home = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell style={{ fontWeight: "bold" }}>ID</TableCell>
+              <TableCell style={{ fontWeight: "bold" }}>Name</TableCell>
+              <TableCell style={{ fontWeight: "bold" }}>Email</TableCell>
+              <TableCell style={{ fontWeight: "bold" }}>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -72,7 +72,7 @@ const Home = () => {
                 <TableCell>
                   <Link to={`/read/${d.id}`} style={{ textDecoration: "none" }}>
                     <Button variant="contained" color="primary" size="small">
-                    <FaEye  style={{ fontSize: "20px" }} />
+                      <FaEye style={{ fontSize: "20px" }} />
                     </Button>
                   </Link>
                   <Link
@@ -80,7 +80,7 @@ const Home = () => {
                     style={{ textDecoration: "none" }}
                   >
                     <Button variant="contained" color="warning" size="small">
-                    <FaRegEdit  style={{ fontSize: "20px" }}/>
+                      <FaRegEdit style={{ fontSize: "20px" }} />
                     </Button>
                   </Link>
                   <Button
@@ -90,7 +90,7 @@ const Home = () => {
                     onClick={(e) => handleDelete(d.id)}
                   >
                     <FaRegTrashAlt style={{ fontSize: "20px" }} />
-                  </Button> 
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
