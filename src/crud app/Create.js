@@ -1,5 +1,5 @@
 import axios from "axios";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Create = () => {
@@ -10,14 +10,13 @@ const Create = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit  = function (e) {
+  const handleSubmit = function (e) {
     e.preventDefault();
-    axios.post("http://localhost:3030/users", inputData)
-    .then(res=> {
-        alert('Data Posted Successfully !')
-        navigate('/')
-    })
-  }
+    axios.post("http://localhost:3030/users", inputData).then((res) => {
+      alert("Data Posted Successfully !");
+      navigate("/");
+    });
+  };
 
   return (
     <div className="d-flex w-100 vh-100 justify-content-center align-items-center">

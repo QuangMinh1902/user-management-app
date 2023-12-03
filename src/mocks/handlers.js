@@ -1,5 +1,4 @@
 import { http, HttpResponse } from "msw";
-import { json } from "react-router-dom";
 
 let users = [
   { id: 1, name: "an", email: "antran@gmail.com" },
@@ -28,13 +27,13 @@ const handlers = [
 
   http.put("http://localhost:3030/users/:id", async ({ request, params }) => {
     // Simulate a successful PUT request
-    console.log({ params });
-    console.log({ users });
+    // console.log({ params });
+    // console.log({ users });
     const newUser = await request.json();
     const id = parseInt(params["id"]);
     const index = users.findIndex((user) => user.id === id);
     users[index] = { ...newUser, id };
-    console.log(newUser, id, index);
+    // console.log(newUser, id, index);
 
     return HttpResponse.json(
       { message: "User updated successfully" },
@@ -45,18 +44,24 @@ const handlers = [
   http.delete("http://localhost:3030/users/:id", ({ request, params }) => {
     // Simulate a successful DELETE request
     // console.log(request);
-    console.log({ params });
-    console.log({ users });
+    // console.log({ params });
+    // console.log({ users });
     const id = parseInt(params["id"]);
     const index = users.findIndex((user) => user.id === id);
     users.splice(index, 1);
 
-    console.log({users, id, index});
+    // console.log({ users, id, index });
 
     return HttpResponse.json(
       { message: "User deleted successfully" },
       { status: 200 }
     );
+  }),
+
+  http.get("http://localhost:3030/users/:id", ({ params }) => {
+    const id = parseInt(params["id"]);
+    const index = users.findIndex((user) => user.id === id);
+    return HttpResponse.json(users[index]);
   }),
 ];
 
