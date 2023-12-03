@@ -1,6 +1,17 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  Button,
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
+import axios from "axios";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -11,8 +22,6 @@ const Home = () => {
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
-
-  // const navigate = useNavigate();
 
   const handleDelete = function (id) {
     console.log("Delete button clicked for user ID:", id);
@@ -35,50 +44,54 @@ const Home = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <Link to="/create" className="btn btn-success my-3">
-        Create User
+    <Container maxWidth="md" mt={5}>
+      <Link to="/create">
+        <Button variant="contained" color="success" my={3}>
+          Create User
+        </Button>
       </Link>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((d, i) => (
-            <tr key={i}>
-              <td>{d.id}</td>
-              <td>{d.name}</td>
-              <td>{d.email}</td>
-              <td>
-                <Link
-                  className="text-decoration-none btn btn-sm btn-primary"
-                  to={`/read/${d.id}`}
-                >
-                  Read
-                </Link>
-                <Link
-                  className="text-decoration-none btn btn-sm btn-success"
-                  to={`/update/${d.id}`}
-                >
-                  Update
-                </Link>
-                <button
-                  className="text-decoration-none btn btn-sm btn-danger"
-                  onClick={(e) => handleDelete(d.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <TableContainer component={Paper} mt={3}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((d, i) => (
+              <TableRow key={i}>
+                <TableCell>{d.id}</TableCell>
+                <TableCell>{d.name}</TableCell>
+                <TableCell>{d.email}</TableCell>
+                <TableCell>
+                  <Link to={`/read/${d.id}`} style={{ textDecoration: "none" }}>
+                    <Button variant="contained" color="primary" size="small">
+                      Read
+                    </Button>
+                  </Link>
+                  <Link to={`/update/${d.id}`} style={{ textDecoration: "none" }}>
+                    <Button variant="contained" color="success" size="small">
+                      Update
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    size="small"
+                    onClick={(e) => handleDelete(d.id)}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
   );
 };
 
