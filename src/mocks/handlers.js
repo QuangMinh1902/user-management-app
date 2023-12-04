@@ -16,7 +16,8 @@ const handlers = [
   http.post("http://localhost:3030/users", async ({ request }) => {
     // console.log(await request.json());
     const newUser = await request.json();
-    const id = users.length + 1;
+    const lastUser = users[[users.length - 1]];
+    const id = lastUser.id + 1;
 
     users.push({ ...newUser, id });
     return HttpResponse.json(
