@@ -8,7 +8,7 @@
 - le dossier du backend se situe au dossier mocks 
 
 ## Le Front-end du projet se base sur ReactJS
- - L'interface du projet est établie avec [Material-UI]([https://mui.com/system/getting-started/])
+ - L'interface du projet est établie avec [Material-UI](https://mui.com/system/getting-started/)
  - [Documentation ReactJS](https://react.dev/learn)
 
  ## Quelques configurations peut être nécessaires 
